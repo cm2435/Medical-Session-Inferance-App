@@ -1,0 +1,6 @@
+streamlit
+requests
+
+fastapi==0.68.0
+gunicorn==20.1.0
+uvicorn[standard]==0.15.0
