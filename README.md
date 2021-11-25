@@ -10,35 +10,36 @@ These instructions will give you a copy of the project up and running on
 your local machine for development and testing purposes. This project has been 
 tested on a localhost
 
+First things first, clone the project to localhost and navigate to your commandline 
     git clone https://github.com/cm2435/Medical-Session-Inferance-App/edit/main/README.md
+
+Check that docker desktop daemon is running, navigate to command line and run
+    docker-comopse up -d --build 
+
+This should start the program. Wait for a while, the backend transformers download API is slow. This needs a refactor
+
+Go to 
+    http://localhost:8501/
+And enjoy running!
+   
 
 ### Prerequisites
 
-Requirements for the software and other tools to build, test and push can be found in requirements.txt
-- [Example 1](https://www.example.com)
-- [Example 2](https://www.example.com)
+Docker, for windows WSL and other Daemon requiremnts.
+Python >=3.6
+Check backend and frontend requirements.txt for their respective dependancies. 
 
 ### Installing
 
-TODDO- Write docker container deployment using requirements.txt 
+TODO- Deploy to pypi so that App can be downloaded
 
-TODO- Deploy to pypi so that Library can be downloaded via
-    
-    python -m pip install Simple_ML-
+    python -m pip install Medical-Session-Infernace
 
 
 ## Running the tests
 
 TODO- Write the automated tests for check cases using numpy arrays other than examples
 TODO- Impliment pandas dataframes to fit and predict models
-
-
-## Deployment
-
-To use as part of larger codebase simply import Models from Models, for example- 
-    
-    from Models.supervised_models import Gaussian_Naive_Bayes
-    
 
 ## Contributing
 
@@ -51,13 +52,6 @@ TODO- Impliment contributing.md
 
   - **Charlie Masters ** - *Currently Sole contributer* -
     [LinkedIn](https://www.linkedin.com/in/charlie-masters-a55269166/)
-
-
-## License
-
-This project is licensed under the [CC0 1.0 Universal](LICENSE.md)
-Creative Commons License - see the [LICENSE.md](LICENSE.md) file for
-details
 
 ## Acknowledgments
 
