@@ -10,7 +10,7 @@ These instructions will give you a copy of the project up and running on
 your local machine for development and testing purposes. This project has been 
 tested on a localhost
 
-
+    git clone https://github.com/cm2435/Medical-Session-Inferance-App/edit/main/README.md
 
 ### Prerequisites
 
