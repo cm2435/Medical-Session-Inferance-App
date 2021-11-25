@@ -11,7 +11,7 @@ your local machine for development and testing purposes. This project has been
 tested on a localhost
 
 First things first, clone the project to localhost and navigate to your commandline 
-    git git clone https://github.com/cm2435/Medical-Session-Inferance-App/edit/main/README.md
+    git clone https://github.com/cm2435/Medical-Session-Inferance-App/edit/main/README.md
 
 Check that docker desktop daemon is running, navigate to command line and run
     docker-comopse up -d --build 
@@ -19,7 +19,7 @@ Check that docker desktop daemon is running, navigate to command line and run
 This should start the program. Wait for a while, the backend transformers download API is slow. This needs a refactor
 
 Go to 
-    python http://localhost:8501/
+    http://localhost:8501/
 And enjoy running!
    
 
@@ -33,7 +33,7 @@ Check backend and frontend requirements.txt for their respective dependancies.
 
 TODO- Deploy to pypi so that App can be downloaded
 
-    python -m pip install Medical-Session-Infernace
+    python -m pip install Medical-Session-Inferance
 
 
 ## Running the tests
