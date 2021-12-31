@@ -3,14 +3,16 @@ from fastapi import FastAPI, APIRouter, UploadFile, File
 import numpy as np
 import pandas as pd 
 
-import config
 from sentence_transformers import SentenceTransformer
 from keybert import KeyBERT
 import spacy 
 
 import warnings 
+import pickle 
 
 from schemas import inferance_payload
+from ML import InferanceModels
+
 app = FastAPI()
 controller = APIRouter()
 
@@ -18,10 +20,8 @@ preloaded_models = {}
 @app.on_event("startup")
 def startup_event():
     print("downloading bert sentence transformer")
-    preloaded_models['bert'] = SentenceTransformer('distiluse-base-multilingual-cased-v1')
-    preloaded_models['keybert'] = KeyBERT('distilbert-base-nli-mean-tokens')
-    
-    #preloaded_models['spacy_ner'] = spacy.load('en_core_web_sm') 
+    preloaded_models['model_set'] = InferanceModels()
+
     warnings.filterwarnings("ignore", category=UserWarning)
 
 @controller.get("/")
@@ -32,8 +32,14 @@ def read_root():
 async def read_text(payload: inferance_payload):
     text = payload.session_note
 
-    extracted_keywords = preloaded_models['keybert'].extract_keywords(text, stop_words='english')
-    return {"keywords" : extracted_keywords}
+    extracted_keywords = preloaded_models['model_set'].make_general_nlp_inferance(input_text= text)
+    explainability = preloaded_models['model_set'].shap_attribute_sentiment()
+    shap_values = explainability(["text"])
 
+    return {"inferance": extracted_keywords,
+            "explainability": pickle.dumps(shap_values)
+            }
 
 app.include_router(controller)
+
+

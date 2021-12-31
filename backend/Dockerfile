@@ -4,6 +4,7 @@ FROM python:3.8-slim
 
 WORKDIR /app
 COPY requirements.txt .
+COPY ./models/. /models/
 
 RUN apt-get -y update  && apt-get install -y \
    python3-dev \
@@ -16,7 +17,9 @@ RUN pip install --upgrade setuptools  \
     && pip install \ 
     cython==0.29.24 \
     -r requirements.txt
-    
+
+RUN python -m spacy download en_core_web_sm
+
 COPY . .
 
 EXPOSE 8080
